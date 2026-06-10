@@ -8,7 +8,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    /* --- All CSS unchanged --- */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
@@ -19,46 +18,19 @@
     }
     a { text-decoration: none; color: inherit; }
     img { display: block; max-width: 100%; }
+    .container { max-width: 1340px; margin: 0 auto; padding: 0 24px; }
 
-    .container {
-      max-width: 1340px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* ===== HEADER ===== */
+    /* HEADER */
     .header { border-bottom: 1px solid #e5e7eb; }
-
-    .header .container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 70px;
-    }
-
+    .header .container { display: flex; align-items: center; justify-content: space-between; height: 70px; }
     .header-logo { height: 68px; width: 175px; }
-
-    .header-nav {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
+    .header-nav { display: flex; align-items: center; gap: 8px; }
     .header-nav a {
-      font-size: 13px;
-      font-weight: 600;
-      color: #003061;
-      padding: 8px 16px;
-      border-radius: 20px;
-      transition: background 0.2s;
+      font-size: 13px; font-weight: 600; color: #003061;
+      padding: 8px 16px; border-radius: 20px; transition: background 0.2s;
     }
-
     .header-nav a:hover { background: #f0f0f0; }
-
-    .header-nav a.active {
-      background: #e8e8e8;
-    }
-
+    .header-nav a.active { background: #e8e8e8; }
     .btn-cabinet {
       color: #fff !important;
       background-color: #003061 !important;
@@ -68,327 +40,144 @@
       font-size: 12px;
       display: inline-block;
     }
-
     .btn-cabinet:hover { opacity: 0.9; background: #003061 !important; }
 
-    /* ===== HERO ===== */
+    /* HERO */
     .hero { padding: 40px 0 30px; }
-
     .hero-title {
-      font-size: 42px;
-      font-weight: 800;
-      margin-bottom: 8px;
-      display: block;
-      padding-bottom: 0;
-      width: 100%;
-      text-align: center;
+      font-size: 42px; font-weight: 800; margin-bottom: 8px;
+      display: block; text-align: center;
     }
-
-    .hero-content {
-      display: flex;
-      gap: 20px;
-    }
-
-    .hero-images {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      flex-shrink: 0;
-    }
-
-    .hero-images img {
-      width: 340px;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 6px;
-    }
-
+    .hero-content { display: flex; gap: 20px; }
+    .hero-images { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
+    .hero-images img { width: 340px; height: 200px; object-fit: cover; border-radius: 6px; }
     .hero-text {
-      font-size: 17px;
-      line-height: 1.8;
-      font-weight: 600;
-      text-align: justify;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background-color: #f3f5fc;
-      padding: 28px 32px;
-      border-radius: 8px;
-      flex: 1;
+      font-size: 17px; line-height: 1.8; font-weight: 600;
+      text-align: justify; display: flex; flex-direction: column;
+      justify-content: center; background-color: #f3f5fc;
+      padding: 28px 32px; border-radius: 8px; flex: 1;
     }
-
     .hero-text p { margin-bottom: 16px; }
     .hero-text p:last-child { margin-bottom: 0; }
 
-    /* ===== PARTNERS ===== */
+    /* PARTNERS */
     .partners { padding: 30px 0 40px; }
-
-    .partners-label {
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-
-    .partners-logos {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
+    .partners-label { font-size: 24px; font-weight: 700; margin-bottom: 16px; }
+    .partners-logos { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
     .partner-logo-box {
-      flex: 1;
-      height: 60px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #fff;
+      flex: 1; height: 60px; overflow: hidden;
+      display: flex; align-items: center; justify-content: center; background: #fff;
     }
+    .partner-logo-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
-    .partner-logo-box img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-    }
-
-    /* ===== MISSION ===== */
-    .mission {
-      background-color: #003061;
-      color: #fff;
-      padding: 70px 0;
-    }
-
-    .mission .container {
-      display: flex;
-      align-items: center;
-      gap: 100px;
-    }
-
-    .mission-left {
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 360px;
-    }
-
-    .mission-title {
-      font-size: 55px;
-      font-weight: 800;
-      color: #fff;
-    }
-
-    .mission-text {
-      font-size: 20px;
-      line-height: 1.8;
-      font-weight: 600;
-      text-align: justify;
-      color: #fff;
-    }
-
+    /* MISSION */
+    .mission { background-color: #003061; color: #fff; padding: 70px 0; }
+    .mission .container { display: flex; align-items: center; gap: 100px; }
+    .mission-left { flex-shrink: 0; display: flex; align-items: center; justify-content: center; width: 360px; }
+    .mission-title { font-size: 55px; font-weight: 800; color: #fff; }
+    .mission-text { font-size: 20px; line-height: 1.8; font-weight: 600; text-align: justify; color: #fff; }
     .mission-text p { margin-bottom: 16px; }
     .mission-text p:last-child { margin-bottom: 0; }
 
-    /* ===== STATS ===== */
+    /* STATS */
     .stats { padding: 50px 0; }
-
-    .stats-title {
-      font-size: 26px;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 32px;
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
-
+    .stats-title { font-size: 26px; font-weight: 700; text-align: center; margin-bottom: 32px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
     .stat-card {
-      border: 2px solid #003061;
-      border-radius: 10px;
-      padding: 24px 16px;
-      text-align: center;
+      border: 2px solid #003061; border-radius: 10px;
+      padding: 24px 16px; text-align: center;
     }
-
     .stat-number {
-      background-color: #003061;
-      color: #fff;
-      font-size: 48px;
-      font-weight: 700;
-      border-radius: 10px;
-      padding: 28px 10px;
-      margin-bottom: 14px;
+      background-color: #003061; color: #fff;
+      font-size: 48px; font-weight: 700;
+      border-radius: 10px; padding: 28px 10px; margin-bottom: 14px;
     }
+    .stat-desc { font-size: 18px; font-weight: 600; line-height: 1.5; }
 
-    .stat-desc {
-      font-size: 18px;
-      font-weight: 600;
-      line-height: 1.5;
-    }
-
-    /* ===== TEAM ===== */
+    /* TEAM */
     .team { padding: 20px 0 50px; }
-
-    .team-title {
-      font-size: 26px;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 32px;
-    }
-
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
-
-    .team-card {
-      border-radius: 8px;
-      overflow: hidden;
-      border: 2px solid #003061;
-    }
-
-    .team-card img {
-      width: 100%;
-      height: 310px;
-      object-fit: cover;
-    }
-
+    .team-title { font-size: 26px; font-weight: 700; text-align: center; margin-bottom: 32px; }
+    .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .team-card { border-radius: 8px; overflow: hidden; border: 2px solid #003061; }
+    .team-card img { width: 100%; height: 310px; object-fit: cover; }
     .team-info { padding: 12px 14px; }
+    .team-name { font-size: 20px; font-weight: 700; margin-bottom: 4px; color: #003061; }
+    .team-role { font-size: 13px; font-weight: 600; color: #003061; }
 
-    .team-name {
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 4px;
-      color: #003061;
-    }
-
-    .team-role {
-      font-size: 13px;
-      font-weight: 600;
-      color: #003061;
-    }
-
-    /* ===== FOOTER ===== */
-    .footer {
-      background-color: #003061;
-      color: #fff;
-      padding: 40px 0 20px;
-    }
-
+    /* FOOTER */
+    .footer { background-color: #003061; color: #fff; padding: 40px 0 20px; }
     .footer a { color: rgba(255,255,255,0.7); transition: opacity 0.2s; }
     .footer a:hover { opacity: 0.7; }
-
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 16px;
-    }
-
-    .footer-logo {
-      height: 68px;
-      width: 175px;
-    }
-
-    .footer-col {
-      flex-shrink: 0;
-      min-width: 0;
-    }
-
-    .footer-section-title {
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .footer-links a {
-      font-size: 13px;
-      white-space: nowrap;
-    }
-
-    .footer-contacts-icons {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .footer-contacts-icons a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.2s;
-    }
-
+    .footer-content { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+    .footer-logo { height: 68px; width: 175px; }
+    .footer-col { flex-shrink: 0; min-width: 0; }
+    .footer-section-title { font-size: 14px; font-weight: 700; margin-bottom: 12px; }
+    .footer-links { display: flex; flex-direction: column; gap: 6px; }
+    .footer-links a { font-size: 13px; white-space: nowrap; }
+    .footer-contacts-icons { display: flex; gap: 10px; margin-bottom: 10px; }
+    .footer-contacts-icons a { display: flex; align-items: center; justify-content: center; transition: opacity 0.2s; }
     .footer-contacts-icons a:hover { opacity: 0.7; }
-
     .footer-contacts-icons svg {
-      width: 22px;
-      height: 22px;
-      stroke: #fff;
-      fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      overflow: visible;
+      width: 22px; height: 22px; stroke: #fff; fill: none;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; overflow: visible;
     }
-
-    .footer-email a {
-      display: flex;
-      align-items: center;
-      gap: 0;
-    }
-
+    .footer-email a { display: flex; align-items: center; gap: 0; }
     .footer-email svg {
-      width: 22px;
-      height: 22px;
-      stroke: #fff;
-      fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      overflow: visible;
+      width: 22px; height: 22px; stroke: #fff; fill: none;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; overflow: visible;
     }
-
-    .footer-phones span,
-    .footer-address span {
-      display: block;
-      font-size: 13px;
-      margin-bottom: 4px;
-      white-space: nowrap;
-      color: rgba(255,255,255,0.7);
+    .footer-phones span, .footer-address span {
+      display: block; font-size: 13px; margin-bottom: 4px;
+      white-space: nowrap; color: rgba(255,255,255,0.7);
     }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.2); margin-top: 30px; padding-top: 20px; text-align: right; }
+    .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.6); }
 
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.2);
-      margin-top: 30px;
-      padding-top: 20px;
-      text-align: right;
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .hero-content { flex-direction: column; }
+      .hero-images { flex-direction: row; justify-content: center; }
+      .hero-images img { width: 48%; height: auto; }
+      .mission .container { flex-direction: column; gap: 30px; }
+      .mission-left { width: 100%; text-align: center; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
     }
-
-    .footer-bottom p {
-      font-size: 12px;
-      color: rgba(255,255,255,0.6);
+    @media (max-width: 768px) {
+      .header .container { flex-wrap: wrap; height: auto; padding: 12px 24px; }
+      .header-nav { display: none; }
+      .container { padding: 0 16px; }
+      .hero-title { font-size: 32px; }
+      .hero-text { font-size: 15px; padding: 20px; }
+      .partners-logos { flex-wrap: wrap; }
+      .partner-logo-box { flex: 1 1 45%; }
+      .mission { padding: 40px 0; }
+      .mission-title { font-size: 36px; }
+      .mission-text { font-size: 16px; }
+      .stats-grid { gap: 10px; }
+      .stat-number { font-size: 32px; padding: 18px 5px; }
+      .stat-desc { font-size: 14px; }
+      .team-grid { gap: 12px; }
+      .team-card img { height: 220px; }
+      .footer-content { flex-wrap: wrap; gap: 24px; }
+      .footer-col { flex: 1 1 45%; }
+      .footer-phones span, .footer-address span { white-space: normal; }
+    }
+    @media (max-width: 480px) {
+      .hero-title { font-size: 26px; }
+      .hero-images img { width: 100%; }
+      .hero-images { flex-direction: column; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr; }
+      .mission-title { font-size: 28px; }
     }
   </style>
 </head>
 <body>
-
-  <!-- HEADER -->
   <header class="header">
     <div class="container">
       <img src="logo.png" alt="Vesta Insurance" width="75" height="400" class="header-logo">
       <nav class="header-nav">
-        <!-- FIXED: all links to English relative paths -->
         <a href="index.html">Главная</a>
         <a href="strahsluch.html">Страховой случай</a>
         <a href="strahprog.html">Страховые программы</a>
@@ -399,7 +188,6 @@
     </div>
   </header>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="container">
       <h1 class="hero-title">Vesta – инвестируй в будущее с уверенностью</h1>
@@ -416,7 +204,6 @@
     </div>
   </section>
 
-  <!-- PARTNERS -->
   <section class="partners">
     <div class="container">
       <p class="partners-label">Наши партнеры:</p>
@@ -430,7 +217,6 @@
     </div>
   </section>
 
-  <!-- MISSION -->
   <section class="mission">
     <div class="container">
       <div class="mission-left">
@@ -443,7 +229,6 @@
     </div>
   </section>
 
-  <!-- STATS -->
   <section class="stats">
     <div class="container">
       <h2 class="stats-title">В цифрах о нас</h2>
@@ -468,7 +253,6 @@
     </div>
   </section>
 
-  <!-- TEAM -->
   <section class="team">
     <div class="container">
       <h2 class="team-title">Наша команда</h2>
@@ -505,16 +289,13 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
       <div class="footer-content">
         <img src="logo2.png" alt="Vesta Insurance" class="footer-logo">
-
         <div class="footer-col">
           <p class="footer-section-title">Карта сайта</p>
           <div class="footer-links">
-            <!-- FIXED: correct English file names -->
             <a href="index.html">Главная</a>
             <a href="strahsluch.html">Страховой случай</a>
             <a href="strahprog.html">Страховые программы</a>
@@ -522,7 +303,6 @@
             <a href="contacts.html">Контакты</a>
           </div>
         </div>
-
         <div class="footer-col">
           <p class="footer-section-title">Контакты</p>
           <div class="footer-contacts-icons">
@@ -547,7 +327,6 @@
             </a>
           </div>
         </div>
-
         <div class="footer-col">
           <p class="footer-section-title">Номер телефона</p>
           <div class="footer-phones">
@@ -556,7 +335,6 @@
             <span>+375 29 737-44-76</span>
           </div>
         </div>
-
         <div class="footer-col">
           <p class="footer-section-title">Адрес</p>
           <div class="footer-address">
@@ -565,13 +343,12 @@
           </div>
         </div>
       </div>
-
       <div class="footer-bottom">
         <p>© 2026 Vesta Insurance. ЗАСО "Веста Иншуранс". Все права защищены.</p>
       </div>
     </div>
   </footer>
-  
-<script src="script.js"></script>
+
+  <script src="script.js"></script>
 </body>
 </html>
