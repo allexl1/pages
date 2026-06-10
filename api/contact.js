@@ -1,7 +1,7 @@
 const { Pool } = require('pg');
 
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: process.env.vesta_POSTGRES_URL,   // ← changed
   ssl: { rejectUnauthorized: false }
 });
 
