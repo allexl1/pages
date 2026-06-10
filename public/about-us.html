@@ -159,9 +159,26 @@
       .stat-desc { font-size: 14px; }
       .team-grid { gap: 12px; }
       .team-card img { height: 220px; }
-      .footer-content { flex-wrap: wrap; gap: 24px; }
-      .footer-col { flex: 1 1 45%; }
-      .footer-phones span, .footer-address span { white-space: normal; }
+    .footer-content {
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .footer-col {
+      flex: 1 1 100%;
+      min-width: auto;
+    }
+    .footer-logo {
+      width: 120px;
+      height: auto;
+    }
+    .footer-phones span,
+    .footer-address span {
+      white-space: normal;
+    }
+    .footer-contacts-icons {
+      justify-content: flex-start;
+    }
     }
     @media (max-width: 480px) {
       .hero-title { font-size: 26px; }
