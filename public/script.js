@@ -28,7 +28,10 @@ function showLoggedInHeader(displayName) {
     cabinetBtn.classList.remove('active');
   }
 
-  // Добавляем кнопку «Выйти» рядом с ней
+  // Не добавляем кнопку «Выйти» на странице личного кабинета (там свой выход)
+  const isDashboard = window.location.pathname.endsWith('/dashboard.html');
+  if (isDashboard) return;
+
   const headerNav = document.querySelector('.header-nav');
   if (headerNav && !document.getElementById('logout-btn')) {
     const logoutLink = document.createElement('a');
