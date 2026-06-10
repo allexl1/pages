@@ -1,39 +1,38 @@
 // ================= АВТОРИЗАЦИЯ (проверка при загрузке любой страницы) =================
 document.addEventListener('DOMContentLoaded', async () => {
   const token = localStorage.getItem('authToken');
-  if (!token) return;
-
-  try {
-    const res = await fetch('/api/me', {
-      headers: { 'Authorization': `Bearer ${token}` }
-    });
-
-    if (res.ok) {
-      const data = await res.json();
-      showLoggedInHeader(data.user.passport_id);
-    } else {
-      localStorage.removeItem('authToken');
+  if (token) {
+    try {
+      const res = await fetch('/api/me', {
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+      if (res.ok) {
+        const data = await res.json();
+        showLoggedInHeader(data.user.passport_id);
+      } else {
+        localStorage.removeItem('authToken');
+      }
+    } catch (e) {
+      // нет соединения
     }
-  } catch (e) {
-    // нет соединения – оставляем как есть
+  }
+
+  // Бургер‑меню (перенесено внутрь)
+  const burger = document.querySelector('.burger-menu');
+  const nav = document.querySelector('.header-nav');
+  if (burger && nav) {
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('active');
+      nav.classList.toggle('open');
+    });
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        burger.classList.remove('active');
+        nav.classList.remove('open');
+      });
+    });
   }
 });
-// Бургер-меню
-const burger = document.querySelector('.burger-menu');
-const nav = document.querySelector('.header-nav');
-if (burger && nav) {
-  burger.addEventListener('click', () => {
-    burger.classList.toggle('active');
-    nav.classList.toggle('open');
-  });
-  // Закрытие при клике на ссылку
-  nav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      burger.classList.remove('active');
-      nav.classList.remove('open');
-    });
-  });
-}
 function showLoggedInHeader(displayName) {
   // Меняем кнопку «Личный кабинет» на имя пользователя
   const cabinetBtn = document.querySelector('.btn-cabinet');
