@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>История выплат — Vesta Insurance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fff;
+      color: #003061;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    .container { max-width: 1340px; margin: 0 auto; padding: 0 24px; }
+
+    /* HEADER */
+    .header { border-bottom: 1px solid #e5e7eb; }
+    .header .container { display: flex; align-items: center; justify-content: space-between; height: 70px; }
+    .header-logo { height: 68px; width: 175px; }
+    .header-nav { display: flex; align-items: center; gap: 8px; }
+    .header-nav a {
+      font-size: 13px; font-weight: 600; color: #003061;
+      padding: 8px 16px; border-radius: 20px; transition: background 0.2s;
+    }
+    .header-nav a:hover { background: #f0f0f0; }
+    .header-nav a.active { background: #e8e8e8; }
+    .btn-cabinet {
+      color: #fff !important;
+      background-color: #003061 !important;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 12px;
+      display: inline-block;
+    }
+    .btn-cabinet:hover { opacity: 0.9; background: #003061 !important; }
+
+    /* MAIN DASHBOARD LAYOUT */
+    .dashboard {
+      flex: 1;
+      padding: 40px 0;
+    }
+    .dashboard .container {
+      display: flex;
+      gap: 32px;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      width: 280px;
+      flex-shrink: 0;
+      background: #f3f5fc;
+      border-radius: 16px;
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      border: 1px solid #e0e3ea;
+    }
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: #003061;
+      color: #fff;
+      font-size: 36px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+    .user-name {
+      font-size: 20px;
+      font-weight: 700;
+      color: #003061;
+      text-align: center;
+    }
+    .user-id {
+      font-size: 13px;
+      color: rgba(0,48,97,0.6);
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    .sidebar-menu {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .sidebar-menu a {
+      display: block;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #003061;
+      background: #fff;
+      transition: background 0.2s;
+      border: 1px solid #e0e3ea;
+    }
+    .sidebar-menu a:hover { background: #e8e8e8; }
+    .sidebar-menu a.active { background: #003061; color: #fff; }
+
+    /* CONTENT */
+    .content {
+      flex: 1;
+    }
+    .card {
+      background: #f3f5fc;
+      border-radius: 16px;
+      padding: 28px;
+      border: 1px solid #e0e3ea;
+    }
+    .card h2 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #003061;
+      margin-bottom: 20px;
+    }
+    .history-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .history-table th,
+    .history-table td {
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 1px solid #e0e3ea;
+    }
+    .history-table th {
+      font-size: 14px;
+      font-weight: 700;
+      color: #003061;
+    }
+    .history-table td {
+      font-size: 14px;
+      color: #003061;
+    }
+    .status-paid {
+      color: #008000;
+      font-weight: 600;
+    }
+    .status-pending {
+      color: #cc0000;
+      font-weight: 600;
+    }
+
+    /* FOOTER */
+    .footer {
+      background-color: #003061; color: #fff; padding: 40px 0 20px; margin-top: auto;
+    }
+    .footer a { color: rgba(255,255,255,0.7); transition: opacity 0.2s; }
+    .footer a:hover { opacity: 0.7; }
+    .footer-content {
+      display: flex; justify-content: space-between; align-items: flex-start; gap: 16px;
+    }
+    .footer-logo { height: 68px; width: 175px; }
+    .footer-col { flex-shrink: 0; min-width: 0; }
+    .footer-section-title { font-size: 14px; font-weight: 700; margin-bottom: 12px; }
+    .footer-links { display: flex; flex-direction: column; gap: 6px; }
+    .footer-links a { font-size: 13px; white-space: nowrap; }
+    .footer-contacts-icons { display: flex; gap: 10px; margin-bottom: 10px; }
+    .footer-contacts-icons a { display: flex; align-items: center; justify-content: center; transition: opacity 0.2s; }
+    .footer-contacts-icons a:hover { opacity: 0.7; }
+    .footer-contacts-icons svg {
+      width: 22px; height: 22px; stroke: #fff; fill: none;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; overflow: visible;
+    }
+    .footer-email a { display: flex; align-items: center; gap: 0; }
+    .footer-email svg {
+      width: 22px; height: 22px; stroke: #fff; fill: none;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; overflow: visible;
+    }
+    .footer-phones span, .footer-address span {
+      display: block; font-size: 13px; margin-bottom: 4px;
+      white-space: nowrap; color: rgba(255,255,255,0.7);
+    }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.2);
+      margin-top: 30px; padding-top: 20px; text-align: right;
+    }
+    .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.6); }
+
+    @media (max-width: 768px) {
+      .dashboard .container { flex-direction: column; }
+      .sidebar { width: 100%; }
+      .header-nav { display: none; }
+      .footer-content { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <img src="logo.png" alt="Vesta Insurance" width="75" height="400" class="header-logo">
+      <nav class="header-nav">
+        <a href="index.html">Главная</a>
+        <a href="strahsluch.html">Страховой случай</a>
+        <a href="strahprog.html">Страховые программы</a>
+        <a href="about-us.html">О нас</a>
+        <a href="contacts.html">Контакты</a>
+        <a href="personalaccount.html" class="btn-cabinet">Личный кабинет</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="dashboard">
+    <div class="container">
+      <aside class="sidebar">
+        <div class="avatar" id="avatar-initials">А</div>
+        <div class="user-name" id="sidebar-name">Имя</div>
+        <div class="user-id" id="sidebar-passport">паспорт: </div>
+        <nav class="sidebar-menu">
+          <a href="dashboard.html">Мои полисы</a>
+          <a href="history.html" class="active">История выплат</a>
+          <a href="settings.html">Настройки</a>
+          <a href="#" id="logout-link">Выйти</a>
+        </nav>
+      </aside>
+
+      <div class="content">
+        <div class="card">
+          <h2>История выплат</h2>
+          <table class="history-table">
+            <thead>
+              <tr>
+                <th>Дата</th>
+                <th>Страховой случай</th>
+                <th>Сумма</th>
+                <th>Статус</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>15.03.2026</td>
+                <td>Медицинские расходы</td>
+                <td>1 200 руб.</td>
+                <td class="status-paid">Выплачено</td>
+              </tr>
+              <tr>
+                <td>02.02.2026</td>
+                <td>КАСКО (ремонт)</td>
+                <td>8 500 руб.</td>
+                <td class="status-paid">Выплачено</td>
+              </tr>
+              <tr>
+                <td>10.01.2026</td>
+                <td>Затопление квартиры</td>
+                <td>22 000 руб.</td>
+                <td class="status-pending">На рассмотрении</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <img src="logo2.png" alt="Vesta Insurance" class="footer-logo">
+        <div class="footer-col">
+          <p class="footer-section-title">Карта сайта</p>
+          <div class="footer-links">
+            <a href="index.html">Главная</a>
+            <a href="strahsluch.html">Страховой случай</a>
+            <a href="strahprog.html">Страховые программы</a>
+            <a href="about-us.html">О нас</a>
+            <a href="contacts.html">Контакты</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <p class="footer-section-title">Контакты</p>
+          <!-- иконки соцсетей опущены для краткости, можешь добавить как в других страницах -->
+        </div>
+        <div class="footer-col">
+          <p class="footer-section-title">Номер телефона</p>
+          <div class="footer-phones">
+            <span>+375 17 240-12-22</span>
+            <span>+375 44 743 74-71</span>
+            <span>+375 29 737-44-76</span>
+          </div>
+        </div>
+        <div class="footer-col">
+          <p class="footer-section-title">Адрес</p>
+          <div class="footer-address">
+            <span>г. Минск, ул. Долгобродского, 12</span>
+            <span>г. Минск, ул. Ольшевского, 41</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Vesta Insurance. ЗАСО "Веста Иншуранс". Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Загрузка данных пользователя в сайдбар
+    document.addEventListener('DOMContentLoaded', async () => {
+      const token = localStorage.getItem('authToken');
+      if (!token) return;
+      try {
+        const res = await fetch('/api/me', {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        if (res.ok) {
+          const data = await res.json();
+          const name = data.user.passport_id;
+          const initials = name.substring(0, 2).toUpperCase();
+          document.getElementById('avatar-initials').textContent = initials;
+          document.getElementById('sidebar-name').textContent = name;
+          document.getElementById('sidebar-passport').textContent = 'паспорт: ' + name;
+        }
+      } catch {}
+
+      document.getElementById('logout-link').addEventListener('click', (e) => {
+        e.preventDefault();
+        localStorage.removeItem('authToken');
+        window.location.href = '/index.html';
+      });
+    });
+  </script>
+</body>
+</html>
