@@ -70,6 +70,7 @@ function showLoggedInHeader(displayName) {
 // ================= ФОРМА ВХОДА (personalaccount.html) =================
 const loginForm = document.getElementById('login-form');
 if (loginForm) {
+    document.getElementById('login-passport').focus();
   loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const passport = document.getElementById('login-passport').value.trim();
