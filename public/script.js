@@ -29,7 +29,9 @@ function showLoggedInHeader(displayName) {
   }
 
   // Не добавляем кнопку «Выйти» на странице личного кабинета (там свой выход)
-  const isDashboard = window.location.pathname.endsWith('/dashboard.html');
+  const isDashboard = window.location.pathname.endsWith('/dashboard.html') ||
+                      window.location.pathname.endsWith('/history.html') ||
+                      window.location.pathname.endsWith('/settings.html');
   if (isDashboard) return;
 
   const headerNav = document.querySelector('.header-nav');
