@@ -16,7 +16,8 @@ if (loginForm) {
       const data = await res.json();
 
       if (data.success) {
-        alert('Вход выполнен!'); // or redirect: window.location.href = '/dashboard.html'
+        // Successful login → redirect to dashboard
+        window.location.href = '/dashboard.html';
       } else {
         errorDiv.style.display = 'block';
       }
@@ -31,7 +32,6 @@ document.querySelectorAll('.contact-form').forEach(form => {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // Collect data – adjust selectors if you add IDs/classes
     const surname = form.querySelector('input[placeholder*="Фамилия"]')?.value || '';
     const name = form.querySelector('input[placeholder*="Имя"]')?.value || '';
     const email = form.querySelector('input[type="email"]')?.value || '';
