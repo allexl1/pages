@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вход в личный кабинет — Vesta Insurance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fff;
+      color: #003061;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    .container {
+      max-width: 1340px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===== HEADER ===== */
+    .header { border-bottom: 1px solid #e5e7eb; }
+
+    .header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+
+    .header-logo { height: 68px; width: 175px; }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .header-nav a {
+      font-size: 13px;
+      font-weight: 600;
+      color: #003061;
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: background 0.2s;
+    }
+
+    .header-nav a:hover { background: #f0f0f0; }
+
+    .header-nav a.active {
+      background: #e8e8e8;
+    }
+
+    .btn-cabinet {
+      color: #fff !important;
+      background-color: #003061 !important;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 12px;
+      display: inline-block;
+    }
+
+    .btn-cabinet:hover { opacity: 0.9; background: #003061 !important; }
+
+    /* ===== MAIN / LOGIN FORM ===== */
+    .main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 64px 24px;
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 480px;
+      border: 2px solid #003061;
+      border-radius: 16px;
+      padding: 40px;
+    }
+
+    .login-card__title {
+      font-size: 22px;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 32px;
+      color: #003061;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: #003061;
+      margin-bottom: 8px;
+    }
+
+    .form-group input {
+      width: 100%;
+      height: 48px;
+      border: 2px solid #003061;
+      border-radius: 8px;
+      padding: 0 16px;
+      font-size: 14px;
+      font-family: 'Poppins', sans-serif;
+      color: #003061;
+      background: #ffffff;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus {
+      border-color: #003061;
+    }
+
+    .login-card__btn {
+      width: 100%;
+      height: 48px;
+      background: #003061;
+      color: #ffffff;
+      border: none;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 500;
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: opacity 0.2s;
+    }
+
+    .login-card__btn:hover {
+      opacity: 0.85;
+    }
+
+    .login-card__help {
+      text-align: center;
+      font-size: 13px;
+      color: #003061;
+      margin-top: 20px;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background-color: #003061;
+      color: #fff;
+      padding: 40px 0 20px;
+      margin-top: auto;
+    }
+
+    .footer a { color: rgba(255,255,255,0.7); transition: opacity 0.2s; }
+    .footer a:hover { opacity: 0.7; }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .footer-logo { height: 68px; width: 175px; }
+
+    .footer-col { flex-shrink: 0; min-width: 0; }
+
+    .footer-section-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .footer-links a { font-size: 13px; white-space: nowrap; }
+
+    .footer-contacts-icons {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .footer-contacts-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.2s;
+    }
+
+    .footer-contacts-icons a:hover { opacity: 0.7; }
+
+    .footer-contacts-icons svg {
+      width: 22px; height: 22px;
+      stroke: #fff; fill: none;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+      overflow: visible;
+    }
+
+    .footer-email a {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .footer-email svg {
+      width: 22px; height: 22px;
+      stroke: #fff; fill: none;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+      overflow: visible;
+    }
+
+    .footer-phones span,
+    .footer-address span {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 4px;
+      white-space: nowrap;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.2);
+      margin-top: 30px;
+      padding-top: 20px;
+      text-align: right;
+    }
+
+    .footer-bottom p {
+      font-size: 12px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .header-nav { display: none; }
+      .footer-content { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container">
+      <img src="logo.png" alt="Vesta Insurance" width="75" height="400" class="header-logo">
+      <nav class="header-nav">
+        <a href="/Users/alexlab/Documents/лабы 3 курс/2 сем/эб/чистовой/главная/главная.html">Главная</a>
+        <a href="/Users/alexlab/Documents/лабы 3 курс/2 сем/эб/чистовой/страховой случай/страхслуч.html">Страховой случай</a>
+        <a href="/Users/alexlab/Documents/лабы 3 курс/2 сем/эб/чистовой/страховые программы/страх прог.html">Страховые программы</a>
+        <a href="/Users/alexlab/Documents/лабы 3 курс/2 сем/эб/чистовой/о нас/about us.html">О нас</a>
+        <a href="/Users/alexlab/Documents/лабы 3 курс/2 сем/эб/чистовой/контакты/contacts .html">Контакты</a>
+        <a href="/Users/alexlab/Documents/лабы 3 курс/2 сем/эб/чистовой/личный кабинет/личный кабинет.html" class="active" class="btn-cabinet">Личный кабинет</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="main">
+    <div class="login-card">
+      <h1 class="login-card__title">Вход в личный кабинет</h1>
+      <form>
+        <div class="form-group">
+          <label>Идентификационный номер паспорта</label>
+          <input type="text">
+        </div>
+        <div class="form-group">
+          <label>Номер телефона</label>
+          <input type="tel">
+        </div>
+        <button type="submit" class="login-card__btn">Продолжить</button>
+      </form>
+      <p class="login-card__help">При проблемах со входом, звоните</p>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <img src="logo2.png" alt="Vesta Insurance" class="footer-logo">
+
+        <div class="footer-col">
+          <p class="footer-section-title">Карта сайта</p>
+          <div class="footer-links">
+            <a href="glavnaya.html">Главная</a>
+            <a href="strahsluch.html">Страховой случай</a>
+            <a href="strahprog.html">Страховые программы</a>
+            <a href="about_us.html">О нас</a>
+            <a href="contacts.html">Контакты</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <p class="footer-section-title">Контакты</p>
+          <div class="footer-contacts-icons">
+            <a href="https://t.me/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M23.91 3.79L20.3 20.84c-.25 1.21-.98 1.5-2 .94l-5.5-4.07-2.66 2.57c-.3.3-.55.56-1.1.56-.72 0-.6-.27-.84-.95L6.3 13.7l-5.45-1.7c-1.18-.35-1.19-1.16.26-1.75l21.26-8.2c.97-.43 1.9.24 1.53 1.73z"/></svg>
+            </a>
+            <a href="tel:+375172401222">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </a>
+          </div>
+          <div class="footer-contacts-icons">
+            <a href="https://facebook.com/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://instagram.com/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+          </div>
+          <div class="footer-email">
+            <a href="mailto:vestainsurancebelarus@gmail.com">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <p class="footer-section-title">Номер телефона</p>
+          <div class="footer-phones">
+            <span>+375 17 240-12-22</span>
+            <span>+375 44 743 74-71</span>
+            <span>+375 29 737-44-76</span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <p class="footer-section-title">Адрес</p>
+          <div class="footer-address">
+            <span>г. Минск, ул. Долгобродского, 12</span>
+            <span>г. Минск, ул. Ольшевского, 41</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Vesta Insurance. ЗАСО "Веста Иншуранс". Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

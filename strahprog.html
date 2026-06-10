@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Страховые программы — Vesta Insurance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* --- All CSS unchanged --- */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; background: #fff; color: #003061; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    .container { max-width: 1340px; margin: 0 auto; padding: 0 24px; }
+    .header { border-bottom: 1px solid #e5e7eb; }
+    .header .container { display: flex; align-items: center; justify-content: space-between; height: 70px; }
+    .header-logo { height: 68px; width: 175px; }
+    .header-nav { display: flex; align-items: center; gap: 8px; }
+    .header-nav a { font-size: 13px; font-weight: 600; color: #003061; padding: 8px 16px; border-radius: 20px; transition: background 0.2s; }
+    .header-nav a:hover { background: #f0f0f0; }
+    .header-nav a.active { background: #e8e8e8; }
+    .btn-cabinet { color: #fff !important; background-color: #003061 !important; padding: 8px 18px; border-radius: 20px; font-weight: 600; font-size: 12px; display: inline-block; }
+    .btn-cabinet:hover { opacity: 0.9; background: #003061 !important; }
+    .page-hero { text-align: center; padding: 36px 0 10px; }
+    .page-hero h1 { font-size: 32px; font-weight: 800; margin-bottom: 0; color: #003061; }
+    .tabs { display: flex; justify-content: center; gap: 16px; padding: 28px 24px 10px; max-width: 1340px; margin: 0 auto; }
+    .tab-link { display: flex; align-items: center; justify-content: center; gap: 10px; flex: 1; padding: 14px 20px; border: 2.5px solid #003061; border-radius: 28px; font-size: 16px; font-weight: 700; color: #003061; background: #fff; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+    .tab-link:hover { background: #f3f5fc; }
+    .tab-link svg { width: 24px; height: 24px; fill: none; stroke: #003061; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .section-blue { background-color: #003061; padding: 40px 0 44px; margin-top: 36px; }
+    .section-blue .section-heading { color: #fff; font-style: italic; }
+    .section-white { background-color: #fff; padding: 40px 0 44px; }
+    .section-heading { font-size: 28px; font-weight: 800; margin-bottom: 24px; color: #003061; }
+    .category { font-size: 22px; font-weight: 700; margin-bottom: 18px; display: inline-block; }
+    .category-primary { color: #003061; }
+    .category-white { color: #fff; }
+    .group-white { background: #fff; border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+    .group-white:last-child { margin-bottom: 0; }
+    .group-dark { background: #003061; border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+    .group-dark:last-child { margin-bottom: 0; }
+    .row-card { display: flex; overflow: hidden; border-radius: 8px; background: #fff; border: 1px solid #e0e3ea; padding: 0; }
+    .row-card + .row-card { margin-top: 16px; }
+    .row-card .img { width: 28%; flex-shrink: 0; border-radius: 0; overflow: hidden; }
+    .row-card .img img { width: 100%; height: 100%; object-fit: cover; min-height: 140px; display: block; }
+    .row-card .body { flex: 1; display: flex; flex-direction: column; justify-content: space-between; padding: 16px 24px; }
+    .row-card .body h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; color: #003061; }
+    .row-card .body p { font-size: 15px; line-height: 1.7; color: #003061; font-weight: 400; }
+    .row-card.dark { background: #003061; border: 1px solid rgba(255,255,255,0.15); }
+    .row-card.dark .body h3 { color: #fff; font-size: 20px; font-weight: 800; }
+    .row-card.dark .body p { color: rgba(255,255,255,0.85); font-size: 15px; font-weight: 400; }
+    .pills { display: flex; gap: 10px; margin-top: 24px; }
+    .pill { height: 44px; padding: 0 32px; border-radius: 9999px; font-size: 15px; font-weight: 700; border: none; cursor: pointer; display: flex; align-items: center; font-family: 'Poppins', sans-serif; }
+    .pill-dark { background: #003061; color: #fff; }
+    .pill-dark:hover { opacity: 0.9; }
+    .pill-light-gray { background: #003061; color: #fff; }
+    .pill-light-gray:hover { opacity: 0.9; }
+    .pill-white { background: #fff; color: #003061; font-weight: 600; }
+    .pill-white:hover { background: #f0f0f0; }
+    .footer { background-color: #003061; color: #fff; padding: 40px 0 20px; }
+    .footer a { color: rgba(255,255,255,0.7); transition: opacity 0.2s; }
+    .footer a:hover { opacity: 0.7; }
+    .footer-content { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+    .footer-logo { height: 68px; width: 175px; }
+    .footer-col { flex-shrink: 0; min-width: 0; }
+    .footer-section-title { font-size: 14px; font-weight: 700; margin-bottom: 12px; }
+    .footer-links { display: flex; flex-direction: column; gap: 6px; }
+    .footer-links a { font-size: 13px; white-space: nowrap; }
+    .footer-contacts-icons { display: flex; gap: 10px; margin-bottom: 10px; }
+    .footer-contacts-icons a { display: flex; align-items: center; justify-content: center; transition: opacity 0.2s; }
+    .footer-contacts-icons a:hover { opacity: 0.7; }
+    .footer-contacts-icons svg { width: 22px; height: 22px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; overflow: visible; }
+    .footer-email a { display: flex; align-items: center; gap: 0; }
+    .footer-email svg { width: 22px; height: 22px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; overflow: visible; }
+    .footer-phones span, .footer-address span { display: block; font-size: 13px; margin-bottom: 4px; white-space: nowrap; color: rgba(255,255,255,0.7); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.2); margin-top: 30px; padding-top: 20px; text-align: right; }
+    .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.6); }
+    @media (max-width: 768px) { .tabs { flex-wrap: wrap; gap: 12px; } .tab-link { font-size: 14px; padding: 10px 20px; } .header-nav { display: none; } .footer-content { flex-wrap: wrap; } .row-card { flex-direction: column; } .row-card .img { width: 100%; } }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container">
+      <img src="logo.png" alt="Vesta Insurance" width="75" height="400" class="header-logo">
+      <nav class="header-nav">
+        <!-- FIXED: all links to English relative paths -->
+        <a href="index.html">Главная</a>
+        <a href="strahsluch.html">Страховой случай</a>
+        <a href="strahprog.html" class="active">Страховые программы</a>
+        <a href="about-us.html">О нас</a>
+        <a href="contacts.html">Контакты</a>
+        <a href="personalaccount.html" class="btn-cabinet">Личный кабинет</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- PAGE TITLE -->
+  <div class="page-hero">
+    <h1>Страховые программы</h1>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <a href="#online" class="tab-link">
+      <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      Онлайн клиентам
+    </a>
+    <a href="#private" class="tab-link">
+      <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      Частным клиентам
+    </a>
+    <a href="#corporate" class="tab-link">
+      <svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9h1"/><path d="M9 13h1"/><path d="M9 17h1"/></svg>
+      Корпоративным клиентам
+    </a>
+  </div>
+
+  <!-- ===== SECTION: Онлайн клиентам ===== -->
+  <section class="section-blue" id="online">
+    <div class="container">
+      <h2 class="section-heading"><i>Онлайн клиентам</i></h2>
+
+      <!-- Имущество -->
+      <div class="group-white">
+        <div class="category category-primary">Имущество</div>
+        <div class="row-card">
+          <div class="img"><img src="prog1.jpg" alt="Комплексное страхование квартиры онлайн"></div>
+          <div class="body">
+            <div>
+              <h3>Комплексное страхование квартиры онлайн</h3>
+              <p>Страхование квартиры онлайн без волокиты и горы документов для тех, кто любит свой дом и хочет познать дзен. Вы сами определяете страховую сумму и валюту договора, а если что-то случится, мы компенсируем ущерб. Срок страхования — 1 год. Страховую сумму и валюту вы определяете сами. Внутри страховой суммы нет лимитов. Возможность оформления подписки с ежемесячной автоматической оплатой по договору. Вы можете включить в страховку риски непредвиденных и судебных расходов.</p>
+            </div>
+            <div class="pills"><button class="pill pill-dark">Оформить онлайн</button><button class="pill pill-light-gray">Оставить заявку</button></div>
+          </div>
+        </div>
+        <div class="row-card">
+          <div class="img"><img src="prog2.jpg" alt="Комплексное страхование дома и дачи онлайн"></div>
+          <div class="body">
+            <div>
+              <h3>Комплексное страхование дома и дачи онлайн</h3>
+              <p>Выгодная страховка для тех, кто живет в доме и ценит безмятежность и умиротворение. Выбирайте сумму и оформляйте страхование дачи или дома онлайн за пару минут. Без оценки стоимости и описи имущества. Срок страхования — 1 год. Страховую сумму и валюту вы определяете сами. Внутри страховой суммы нет лимитов. Возможность оформления подписки с ежемесячной автоматической оплатой по договору. Вы можете включить в страховку риски непредвиденных и судебных расходов.</p>
+            </div>
+            <div class="pills"><button class="pill pill-dark">Оформить онлайн</button><button class="pill pill-light-gray">Оставить заявку</button></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Жизнь и здоровье -->
+      <div class="group-white">
+        <div class="category category-primary">Жизнь и здоровье</div>
+        <div class="row-card">
+          <div class="img"><img src="prog3.jpg" alt="Страхование от несчастных случаев для взрослых"></div>
+          <div class="body">
+            <div>
+              <h3>Страхование от несчастных случаев для взрослых</h3>
+              <p>Программа страхования "Жизнь в большом городе" — ваша защита от непредвиденных расходов. При наступлении страхового случая вы получите выплаты: от работодателя – по больничному листу, от страховой компании – согласно условиям вашего договора. Чтобы защитить себя не нужно никуда идти — оформляйте страхование от несчастных случаев онлайн в личном кабинете на сайте.</p>
+            </div>
+            <div class="pills"><button class="pill pill-dark">Оформить онлайн</button><button class="pill pill-light-gray">Оставить заявку</button></div>
+          </div>
+        </div>
+        <div class="row-card">
+          <div class="img"><img src="prog4.jpg" alt="Страхование детей от несчастных случаев"></div>
+          <div class="body">
+            <div>
+              <h3>Страхование детей от несчастных случаев</h3>
+              <p>"Заботливый родитель" — страхование детей от непредвиденных ситуаций. В случае болезни, травмы, отравления и других неприятных событий мы окажем материальную поддержку. Застраховать ребенка онлайн можно начиная с одного года. От каких рисков защищает страховка: впервые диагностированные заболевания; спортивные и бытовые травмы; острые отравления; обморожения и ожоги; укусы животных и насекомых, включая клещей.</p>
+            </div>
+            <div class="pills"><button class="pill pill-dark">Оформить онлайн</button><button class="pill pill-light-gray">Оставить заявку</button></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Путешествия -->
+      <div class="group-white">
+        <div class="category category-primary">Путешествия</div>
+        <div class="row-card">
+          <div class="img"><img src="prog5.jpg" alt="Страхование путешественника"></div>
+          <div class="body">
+            <div>
+              <h3>Страхование путешественника</h3>
+              <p>Быстрая и удобная страховка для выезда за границу онлайн. Оформите дома или по пути за билетами. При страховом случае за рубежом мы возместим вам все траты в пределах страховой суммы: на скорую и неотложную медпомощь, вызов необходимого врача-специалиста; на телефонные звонки в скорую, консульство, на юридическую помощь при необходимости; на новые билеты, если из-за страхового случая вас госпитализировали; на поездку к вам и назад одного близкого родственника; на медицинскую эвакуацию, транспортировку и репатриацию.</p>
+            </div>
+            <div class="pills"><button class="pill pill-dark">Оформить онлайн</button><button class="pill pill-light-gray">Оставить заявку</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION: Частным клиентам ===== -->
+  <section class="section-white" id="private">
+    <div class="container">
+      <h2 class="section-heading">Частным клиентам</h2>
+
+      <!-- Жизнь и здоровье -->
+      <div class="group-dark">
+        <div class="category category-white">Жизнь и здоровье</div>
+        <div class="row-card dark">
+          <div class="img"><img src="prog6.jpg" alt="Страхование от несчастных случаев для всей семьи"></div>
+          <div class="body">
+            <div>
+              <h3>Страхование от несчастных случаев для всей семьи</h3>
+              <p>Продукт "Счастливы вместе" – это страхование жизни и здоровья всех членов семьи в одном договоре. Программа обеспечивает надежную защиту от финансовых последствий несчастных случаев и заболеваний. Какие риски покрывает семейное страхование: заболевания, впервые диагностированные во время действия полиса; травмы, острые отравления, обморожения и ожоги; удары током и молнией; укусы диких зверей и домашних животных, насекомых (включая клещей); получение инвалидности или смерть от этих заболеваний и травм.</p>
+            </div>
+            <div class="pills"><button class="pill pill-white">Оформить онлайн</button><button class="pill pill-white">Оставить заявку</button></div>
+          </div>
+        </div>
+        <div class="row-card dark">
+          <div class="img"><img src="prog7.jpg" alt="Медицинское страхование"></div>
+          <div class="body">
+            <div>
+              <h3>Медицинское страхование</h3>
+              <p>Позволяет пройти обследование или лечение за счет страховой суммы. Первое обращение к врачу — без каких-либо направлений, просто по самочувствию. Повторные визиты, обследования и лечение — только по назначению врача. Что покрывает медицинская страховка: консультации врачей-специалистов; лабораторные исследования; инструментальные исследования; физиотерапевтическое лечение; помощь врача на дому.</p>
+            </div>
+            <div class="pills"><button class="pill pill-white">Оформить онлайн</button><button class="pill pill-white">Оставить заявку</button></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Автомобиль -->
+      <div class="group-dark">
+        <div class="category category-white">Автомобиль</div>
+        <div class="row-card dark">
+          <div class="img"><img src="prog8.jpg" alt="КАСКО"></div>
+          <div class="body">
+            <div>
+              <h3>КАСКО</h3>
+              <p>С машинами постоянно что-то случается и ремонт обходится дорого. Страховка КАСКО покроет расходы. Мы предлагаем регулировать стоимость КАСКО на ваш автомобиль, выбирая только нужные для вас опции; удобный для вас график оплаты взноса: ежеквартально, в два этапа, единовременно; скидка 10% – при единовременной оплате, 5% – при оплате в 2 этапа, до 50% – постоянным клиентам; страхование авто без учета износа; компенсацию затрат на эвакуацию с места ДТП; действие страховки во всех странах мира.</p>
+            </div>
+            <div class="pills"><button class="pill pill-white">Оформить онлайн</button><button class="pill pill-white">Оставить заявку</button></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Финансы -->
+      <div class="group-dark">
+        <div class="category category-white">Финансы</div>
+        <div class="row-card dark">
+          <div class="img"><img src="prog9.jpg" alt="Страхование банковских платежных карточек"></div>
+          <div class="body">
+            <div>
+              <h3>Страхование банковских платежных карточек</h3>
+              <p>Сейчас уже невозможно представить свою жизнь без банковской платежной карточки. Бронирование гостиницы, заказ еды, коммунальные услуги и даже проезд в транспорте мы оплачиваем карточкой. Застраховать можно банковские карты всех платежных систем, действующих в Республике Беларусь, а также электронные кошельки. Срок страхования от 6 до 37 месяцев, но не более срока действия карточки. Страховую сумму вы выбираете самостоятельно.</p>
+            </div>
+            <div class="pills"><button class="pill pill-white">Оформить онлайн</button><button class="pill pill-white">Оставить заявку</button></div>
+          </div>
+        </div>
+        <div class="row-card dark">
+          <div class="img"><img src="prog10.jpg" alt="Страхование рисков вкладчиков"></div>
+          <div class="body">
+            <div>
+              <h3>Страхование рисков вкладчиков</h3>
+              <p>Если по определенным обстоятельствам придется расторгнуть безотзывный вклад, вы не потеряете процентный доход. Сумма страховой выплаты будет равна сумме начисленных процентов на дату, предшествующую дате досрочного расторжения депозита. Страховка защищает от неполучения процентного дохода, если потребуется досрочно отозвать безотзывный вклад из-за болезни, увольнения, установления инвалидности, повреждения жилья или автомобиля и другое.</p>
+            </div>
+            <div class="pills"><button class="pill pill-white">Оформить онлайн</button><button class="pill pill-white">Оставить заявку</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION: Корпоративным клиентам ===== -->
+  <section class="section-blue" id="corporate">
+    <div class="container">
+      <h2 class="section-heading"><i>Корпоративным клиентам</i></h2>
+
+      <!-- Жизнь и здоровье -->
+      <div class="group-white">
+        <div class="category category-primary">Жизнь и здоровье</div>
+        <div class="row-card">
+          <div class="img"><img src="prog11.jpg" alt="Медицинское страхование для бизнеса"></div>
+          <div class="body">
+            <div>
+              <h3>Медицинское страхование для бизнеса</h3>
+              <p>Медицинское корпоративное страхование сотрудников доступно для компаний со всей Беларуси. Оформить его можно на работников и членов их семей в возрасте от 18 до 75 лет. Клиенты сами решают в какой медицинский центр обращаться и какого врача выбирать, записываются на прием, а мы высылаем гарантийное письмо. Первое обращение к врачу — по плохому самочувствию без направления, повторные визиты — по назначению врача. Перед посещением медицинского учреждения необходимо согласовать визит с нами.</p>
+            </div>
+            <div class="pills"><button class="pill pill-dark">Оформить онлайн</button><button class="pill pill-light-gray">Оставить заявку</button></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Имущество -->
+      <div class="group-white">
+        <div class="category category-primary">Имущество</div>
+        <div class="row-card">
+          <div class="img"><img src="prog12.jpg" alt="Страхование имущества юридических лиц"></div>
+          <div class="body">
+            <div>
+              <h3>Страхование имущества юридических лиц</h3>
+              <p>Насколько осторожно вы бы ни вели бизнес, всегда есть множество рисков, способных негативно повлиять на финансовую стабильность. Разнообразие программ и тарифов позволит подобрать оптимальную защиту для имущества независимо от размера и специфики вашей компании. Здания, сооружения, отдельные помещения; инженерные коммуникации и оборудование зданий; рекламные конструкции; технологическое и производственное оборудование.</p>
+            </div>
+            <div class="pills"><button class="pill pill-dark">Оформить онлайн</button><button class="pill pill-light-gray">Оставить заявку</button></div>
+          </div>
+        </div>
+        <div class="row-card">
+          <div class="img"><img src="prog13.jpg" alt="Страхование грузов"></div>
+          <div class="body">
+            <div>
+              <h3>Страхование грузов</h3>
+              <p>Страхование грузов защищает интересы владельцев грузов при их перевозке любым видом транспорта, компенсируя убытки от утраты, повреждения или порчи. Можно застраховать любые грузы, перевозимые любым видом транспорта. От чего защищает страховка: пожар, взрыв при транспортировке; стихийные бедствия; противоправные действия 3-их лиц; бой и лом хрупких предметов в результате аварии; гибель и повреждение живого груза.</p>
+            </div>
+            <div class="pills"><button class="pill pill-dark">Оформить онлайн</button><button class="pill pill-light-gray">Оставить заявку</button></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Автомобили -->
+      <div class="group-white">
+        <div class="category category-primary">Автомобили</div>
+        <div class="row-card">
+          <div class="img"><img src="prog14.jpg" alt="КАСКО для юридических лиц"></div>
+          <div class="body">
+            <div>
+              <h3>КАСКО для юридических лиц</h3>
+              <p>Ситуации c автомобилями на дороге всегда непредсказуемы – аварии, поломки, ЧП, хищения транспорта. Договор страхования КАСКО позволяет получить возмещение ущерба в случае повреждения автомобиля или компенсацию стоимости автомобиля в случае его угона или полного уничтожения. С нами бюджет вашего предприятия всегда будет защищен от непредвиденных финансовых потерь.</p>
+            </div>
+            <div class="pills"><button class="pill pill-dark">Оформить онлайн</button><button class="pill pill-light-gray">Оставить заявку</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <img src="logo2.png" alt="Vesta Insurance" class="footer-logo">
+
+        <div class="footer-col">
+          <p class="footer-section-title">Карта сайта</p>
+          <div class="footer-links">
+            <!-- FIXED: correct file names -->
+            <a href="index.html">Главная</a>
+            <a href="strahsluch.html">Страховой случай</a>
+            <a href="strahprog.html">Страховые программы</a>
+            <a href="about-us.html">О нас</a>
+            <a href="contacts.html">Контакты</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <p class="footer-section-title">Контакты</p>
+          <div class="footer-contacts-icons">
+            <a href="https://t.me/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M23.91 3.79L20.3 20.84c-.25 1.21-.98 1.5-2 .94l-5.5-4.07-2.66 2.57c-.3.3-.55.56-1.1.56-.72 0-.6-.27-.84-.95L6.3 13.7l-5.45-1.7c-1.18-.35-1.19-1.16.26-1.75l21.26-8.2c.97-.43 1.9.24 1.53 1.73z"/></svg>
+            </a>
+            <a href="tel:+375172401222">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </a>
+          </div>
+          <div class="footer-contacts-icons">
+            <a href="https://facebook.com/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://instagram.com/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+          </div>
+          <div class="footer-email">
+            <a href="mailto:vestainsurancebelarus@gmail.com">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <p class="footer-section-title">Номер телефона</p>
+          <div class="footer-phones">
+            <span>+375 17 240-12-22</span>
+            <span>+375 44 743 74-71</span>
+            <span>+375 29 737-44-76</span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <p class="footer-section-title">Адрес</p>
+          <div class="footer-address">
+            <span>г. Минск, ул. Долгобродского, 12</span>
+            <span>г. Минск, ул. Ольшевского, 41</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Vesta Insurance. ЗАСО "Веста Иншуранс". Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
