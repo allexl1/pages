@@ -119,9 +119,10 @@
     .btn-submit {
       background: #003061; color: #ffffff; font-size: 14px; font-weight: 600;
       padding: 12px 32px; border-radius: 50px; border: none; cursor: pointer;
-      font-family: 'Poppins', sans-serif; transition: opacity 0.2s; align-self: flex-start;
+      font-family: 'Poppins', sans-serif; transition: opacity 0.2s; align-self: flex-start; transition: transform 0.2s, opacity 0.2s, box-shadow 0.2s;
     }
-    .btn-submit:hover { opacity: 0.9; }
+    .btn-submit:hover { opacity: 0.9; transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);}
 
     /* FAQ */
     .faq-section { padding: 40px 0 50px; }
