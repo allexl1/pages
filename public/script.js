@@ -1,4 +1,53 @@
-// ===== LOGIN FORM (personalaccount.html) =====
+// ================= АВТОРИЗАЦИЯ (проверка при загрузке любой страницы) =================
+document.addEventListener('DOMContentLoaded', async () => {
+  const token = localStorage.getItem('authToken');
+  if (!token) return;
+
+  try {
+    const res = await fetch('/api/me', {
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      showLoggedInHeader(data.user.passport_id);
+    } else {
+      localStorage.removeItem('authToken');
+    }
+  } catch (e) {
+    // нет соединения – оставляем как есть
+  }
+});
+
+function showLoggedInHeader(displayName) {
+  // Меняем кнопку «Личный кабинет» на имя пользователя
+  const cabinetBtn = document.querySelector('.btn-cabinet');
+  if (cabinetBtn) {
+    cabinetBtn.textContent = displayName;
+    cabinetBtn.href = '/dashboard.html';
+    cabinetBtn.classList.remove('active');
+  }
+
+  // Добавляем кнопку «Выйти» рядом с ней
+  const headerNav = document.querySelector('.header-nav');
+  if (headerNav && !document.getElementById('logout-btn')) {
+    const logoutLink = document.createElement('a');
+    logoutLink.id = 'logout-btn';
+    logoutLink.href = '#';
+    logoutLink.textContent = 'Выйти';
+    logoutLink.className = 'btn-cabinet';
+    logoutLink.style.backgroundColor = '#cc0000';
+    logoutLink.style.marginLeft = '8px';
+    logoutLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      localStorage.removeItem('authToken');
+      window.location.href = '/index.html';
+    });
+    headerNav.appendChild(logoutLink);
+  }
+}
+
+// ================= ФОРМА ВХОДА (personalaccount.html) =================
 const loginForm = document.getElementById('login-form');
 if (loginForm) {
   loginForm.addEventListener('submit', async (e) => {
@@ -16,7 +65,7 @@ if (loginForm) {
       const data = await res.json();
 
       if (data.success) {
-        // Successful login → redirect to dashboard
+        localStorage.setItem('authToken', data.token);
         window.location.href = '/dashboard.html';
       } else {
         errorDiv.style.display = 'block';
@@ -27,11 +76,10 @@ if (loginForm) {
   });
 }
 
-// ===== CONTACT FORMS (index.html, contacts.html) =====
+// ================= ФОРМЫ ОБРАТНОЙ СВЯЗИ (index.html, contacts.html) =================
 document.querySelectorAll('.contact-form').forEach(form => {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-
     const surname = form.querySelector('input[placeholder*="Фамилия"]')?.value || '';
     const name = form.querySelector('input[placeholder*="Имя"]')?.value || '';
     const email = form.querySelector('input[type="email"]')?.value || '';
