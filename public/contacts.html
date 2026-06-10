@@ -40,6 +40,7 @@
       font-weight: 600;
       font-size: 12px;
       display: inline-block;
+      transition: transform 0.2s, opacity 0.2s, box-shadow 0.2s;
     }
     .btn-cabinet:hover { opacity: 0.9; background: #003061 !important; }
 
@@ -119,10 +120,10 @@
     .btn-submit {
       background: #003061; color: #ffffff; font-size: 14px; font-weight: 600;
       padding: 12px 32px; border-radius: 50px; border: none; cursor: pointer;
-      font-family: 'Poppins', sans-serif; transition: opacity 0.2s; align-self: flex-start; transition: transform 0.2s, opacity 0.2s, box-shadow 0.2s;
+      font-family: 'Poppins', sans-serif; align-self: flex-start;
+      transition: transform 0.2s, opacity 0.2s, box-shadow 0.2s;
     }
-    .btn-submit:hover { opacity: 0.9; transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);}
+    .btn-submit:hover { opacity: 0.9; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 
     /* FAQ */
     .faq-section { padding: 40px 0 50px; }
@@ -165,13 +166,101 @@
     }
     .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.6); }
 
+    /* Бургер-меню (общие стили) */
+    .burger-menu {
+      display: none;                /* скрыт на десктопе */
+      flex-direction: column;
+      justify-content: space-between;
+      width: 28px;
+      height: 22px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      margin-left: auto;
+      z-index: 1001;
+    }
+    .burger-menu span {
+      display: block;
+      width: 100%;
+      height: 3px;
+      background: #003061;
+      border-radius: 3px;
+      transition: transform 0.3s, opacity 0.2s;
+    }
+    .burger-menu.active span:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+    }
+    .burger-menu.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .burger-menu.active span:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
+    }
+
     /* RESPONSIVE */
     @media (max-width: 1024px) {
       .contact-block { grid-template-columns: 1fr 1fr; }
     }
+
     @media (max-width: 768px) {
-      .header .container { flex-wrap: wrap; height: auto; padding: 12px 24px; }
-      .header-nav { display: none; }
+      /* Шапка – лого слева, бургер справа */
+      .header .container {
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+        height: auto;
+        padding: 12px 24px;
+        position: relative;
+      }
+      .header-logo {
+        width: 130px;
+        height: auto;
+        margin: 0;
+      }
+      .burger-menu {
+        display: flex;              /* показываем бургер */
+      }
+      .header-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        flex-direction: column;
+        padding: 16px 20px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        z-index: 1000;
+        border-radius: 0 0 12px 12px;
+      }
+      .header-nav.open {
+        display: flex;
+      }
+      .header-nav a {
+        display: block;
+        width: 100%;
+        padding: 14px 16px;
+        margin: 4px 0;
+        border-radius: 12px;
+        background: #f8f9fc;
+        font-size: 14px;
+        font-weight: 600;
+        color: #003061;
+        border: none;
+        transition: background 0.2s;
+      }
+      .header-nav a:hover {
+        background: #e8ecf4;
+      }
+      .btn-cabinet {
+        background: #003061 !important;
+        color: #fff !important;
+        text-align: center;
+        margin-top: 8px;
+      }
+
+      /* Остальные общие */
       .container { padding: 0 16px; }
       .page-title h1 { font-size: 28px; }
       .contact-block { grid-template-columns: 1fr; }
@@ -179,125 +268,38 @@
       .form-row { grid-template-columns: 1fr; gap: 16px; }
       .faq-item { padding: 24px; }
       .faq-item h3 { font-size: 18px; }
-      
-.header .container {
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: center;
-    height: auto;
-    padding: 12px 24px;
-    position: relative;
-  }
-  .header-logo {
-    width: 130px;
-    height: auto;
-    margin: 0;
-  }
-  .burger-menu {
-    display: flex;              /* показываем бургер */
-  }
 
-  /* Выпадающее меню */
-  .header-nav {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: #fff;
-    flex-direction: column;
-    padding: 16px 20px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    z-index: 1000;
-    border-radius: 0 0 12px 12px;
-  }
-  .header-nav.open {
-    display: flex;
-  }
-  .header-nav a {
-    display: block;
-    width: 100%;
-    padding: 14px 16px;
-    margin: 4px 0;
-    border-radius: 12px;
-    background: #f8f9fc;
-    font-size: 14px;
-    font-weight: 600;
-    color: #003061;
-    border: none;
-    transition: background 0.2s;
-  }
-  .header-nav a:hover {
-    background: #e8ecf4;
-  }
-  .btn-cabinet {
-    background: #003061 !important;
-    color: #fff !important;
-    text-align: center;
-    margin-top: 8px;
-  }
+      /* Футер – логотип слева, колонки в 2 ряда */
+      .footer-content {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 24px 4%;
+        text-align: left;
+      }
+      .footer-col {
+        flex: 0 0 46%;
+        min-width: 140px;
+      }
+      .footer-logo {
+        width: 130px;
+        height: auto;
+        margin: 0 0 20px 0;
+        order: -1;
+      }
+      .footer-phones span,
+      .footer-address span {
+        white-space: normal;
+      }
+    }
 
-  /* Футер – логотип слева, колонки в 2 ряда */
-  .footer-content {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 24px 4%;
-    text-align: left;
-  }
-  .footer-col {
-    flex: 0 0 46%;              /* две колонки в строку */
-    min-width: 140px;
-  }
-  .footer-logo {
-    width: 130px;               /* как в шапке */
-    height: auto;
-    margin: 0 0 20px 0;
-    order: -1;                  /* логотип первым */
-  }
-  .footer-phones span,
-  .footer-address span {
-    white-space: normal;
-  }
-}
     @media (max-width: 480px) {
       .page-title h1 { font-size: 24px; }
       .contact-form { padding: 24px; }
       .contact-info { padding: 24px; }
       .btn-submit { width: 100%; text-align: center; }
     }
-    /* Бургер-меню (общие стили) */
-.burger-menu {
-  display: none;                /* скрыт на десктопе */
-  flex-direction: column;
-  justify-content: space-between;
-  width: 28px;
-  height: 22px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  margin-left: auto;
-  z-index: 1001;
-}
-.burger-menu span {
-  display: block;
-  width: 100%;
-  height: 3px;
-  background: #003061;
-  border-radius: 3px;
-  transition: transform 0.3s, opacity 0.2s;
-}
-.burger-menu.active span:nth-child(1) {
-  transform: translateY(9px) rotate(45deg);
-}
-.burger-menu.active span:nth-child(2) {
-  opacity: 0;
-}
-.burger-menu.active span:nth-child(3) {
-  transform: translateY(-9px) rotate(-45deg);
-}
   </style>
 </head>
 <body>
@@ -305,8 +307,8 @@
     <div class="container">
       <img src="logo.png" alt="Vesta Insurance" width="75" height="400" class="header-logo">
       <button class="burger-menu" aria-label="Открыть меню">
-  <span></span><span></span><span></span>
-</button>
+        <span></span><span></span><span></span>
+      </button>
       <nav class="header-nav">
         <a href="index.html">Главная</a>
         <a href="strahsluch.html">Страховой случай</a>
