@@ -18,7 +18,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     // нет соединения – оставляем как есть
   }
 });
-
+// Бургер-меню
+const burger = document.querySelector('.burger-menu');
+const nav = document.querySelector('.header-nav');
+if (burger && nav) {
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('active');
+    nav.classList.toggle('open');
+  });
+  // Закрытие при клике на ссылку
+  nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      burger.classList.remove('active');
+      nav.classList.remove('open');
+    });
+  });
+}
 function showLoggedInHeader(displayName) {
   // Меняем кнопку «Личный кабинет» на имя пользователя
   const cabinetBtn = document.querySelector('.btn-cabinet');
