@@ -171,7 +171,7 @@
       .team-grid { grid-template-columns: 1fr; }
       .mission-title { font-size: 28px; }
     }
-    /* Бургер-меню */
+  /* Бургер-меню */
 .burger-menu {
   display: none;
   flex-direction: column;
@@ -184,6 +184,7 @@
   padding: 0;
   margin-left: auto;
   z-index: 1001;
+  position: relative;
 }
 .burger-menu span {
   display: block;
@@ -193,7 +194,6 @@
   border-radius: 3px;
   transition: transform 0.3s, opacity 0.2s;
 }
-/* Анимация крестика */
 .burger-menu.active span:nth-child(1) {
   transform: translateY(9px) rotate(45deg);
 }
@@ -207,7 +207,22 @@
 @media (max-width: 768px) {
   .burger-menu {
     display: flex;
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 0;
   }
+
+  .header .container {
+    position: relative;
+    justify-content: center;  /* логотип по центру */
+  }
+
+  .header-logo {
+    margin: 0 auto;
+  }
+
   .header-nav {
     display: none;
     position: absolute;
@@ -216,9 +231,10 @@
     width: 100%;
     background: #fff;
     flex-direction: column;
-    padding: 20px;
+    padding: 16px 20px;
     box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     z-index: 1000;
+    border-radius: 0 0 12px 12px;
   }
   .header-nav.open {
     display: flex;
@@ -226,15 +242,24 @@
   .header-nav a {
     display: block;
     width: 100%;
-    padding: 12px 0;
-    border-bottom: 1px solid #eee;
-    text-align: left;
-    border-radius: 0;
+    padding: 14px 16px;
+    margin: 4px 0;
+    border-radius: 12px;
+    background: #f8f9fc;
+    font-size: 14px;
+    font-weight: 600;
+    color: #003061;
+    border: none;
+    transition: background 0.2s;
+  }
+  .header-nav a:hover {
+    background: #e8ecf4;
   }
   .btn-cabinet {
-    margin-top: 8px;
-    display: inline-block !important;
+    background: #003061 !important;
+    color: #fff !important;
     text-align: center;
+    margin-top: 8px;
   }
 }
   </style>
