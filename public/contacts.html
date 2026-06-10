@@ -42,7 +42,7 @@
       display: inline-block;
       transition: transform 0.2s, opacity 0.2s, box-shadow 0.2s;
     }
-    .btn-cabinet:hover { opacity: 0.9; background: #003061 !important; }
+    .btn-cabinet:hover { opacity: 0.9; background: #003061 !important; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 
     /* PAGE TITLE */
     .page-title { text-align: center; padding: 36px 0 28px; }
@@ -219,8 +219,9 @@
         margin: 0;
       }
       .burger-menu {
-        display: flex;              /* показываем бургер */
+        display: flex;
       }
+
       .header-nav {
         display: none;
         position: absolute;
@@ -269,11 +270,11 @@
       .faq-item { padding: 24px; }
       .faq-item h3 { font-size: 18px; }
 
-      /* Футер – логотип слева, колонки в 2 ряда */
+      /* Футер – аккуратный, логотип заметнее */
       .footer-content {
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: flex-start;
+        justify-content: space-between;   /* равномерно распределены */
         align-items: flex-start;
         gap: 24px 4%;
         text-align: left;
@@ -283,7 +284,7 @@
         min-width: 140px;
       }
       .footer-logo {
-        width: 130px;
+        width: 150px;                     /* увеличен с 130 */
         height: auto;
         margin: 0 0 20px 0;
         order: -1;
@@ -324,6 +325,7 @@
     <h1>Контакты</h1>
   </section>
 
+  <!-- Остальной контент без изменений -->
   <section class="contact-section">
     <div class="container">
       <div class="contact-block">
