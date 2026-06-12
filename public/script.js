@@ -1,3 +1,7 @@
+// ================= VERCEL WEB ANALYTICS =================
+// Initialize Vercel Web Analytics
+window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+
 // ================= АВТОРИЗАЦИЯ (проверка при загрузке любой страницы) =================
 document.addEventListener('DOMContentLoaded', async () => {
   const token = localStorage.getItem('authToken');
